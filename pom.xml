@@ -22,10 +22,15 @@
 		</dependency>
 		<dependency>
 			<!-- for hibernate -->
-			<!-- 4.1.7.Final uses 3.15.0.GA -->
+			<!-- 4.1.9.Final uses 3.17.1-GA -->
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
-			<version>3.15.0-GA</version>
+			<version>3.17.1-GA</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.findbugs</groupId>
+			<artifactId>jsr305</artifactId>
+			<version>2.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
