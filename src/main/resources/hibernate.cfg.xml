@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.isolation">2</property>
+		<mapping class="com.github.snd297.finalentities.model.FinalBicycle" />
+		<mapping class="com.github.snd297.finalentities.model.FinalWheel" />
+		<mapping class="com.github.snd297.finalentities.model.FinalSpoke" />
+	</session-factory>
+</hibernate-configuration>

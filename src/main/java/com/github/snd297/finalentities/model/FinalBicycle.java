@@ -4,8 +4,10 @@ import static com.google.common.collect.Sets.newHashSet;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
 
 import com.github.snd297.modelutil.EntityWLongIdAndVersion;
 
@@ -18,7 +20,11 @@ public final class FinalBicycle extends EntityWLongIdAndVersion {
 		wheel.setBicycle(this);
 	}
 
-	@OneToMany(mappedBy = "final_bicycle_id")
+	@OneToMany(
+			mappedBy = "bicycle",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true)
+	@Size(max = 2)
 	public Set<FinalWheel> getWheels() {
 		return wheels;
 	}
