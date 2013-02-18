@@ -11,16 +11,16 @@ import com.github.snd297.modelutil.EntityWLongIdAndVersion;
 
 @Entity
 @Proxy(lazy = false)
-public final class FinalSpoke extends EntityWLongIdAndVersion {
-	private FinalWheel wheel;
+public class Spoke extends EntityWLongIdAndVersion {
+	private Wheel wheel;
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
-	public FinalWheel getWheel() {
+	public Wheel getWheel() {
 		return wheel;
 	}
 
-	public void setWheel(FinalWheel wheel) {
+	public void setWheel(Wheel wheel) {
 		this.wheel = wheel;
 	}
 

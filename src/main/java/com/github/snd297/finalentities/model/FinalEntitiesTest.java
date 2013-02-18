@@ -1,5 +1,8 @@
 package com.github.snd297.finalentities.model;
 
+import static org.junit.Assert.assertTrue;
+
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -21,13 +24,17 @@ public class FinalEntitiesTest {
 			sess = sessFac.openSession();
 			trx = sess.beginTransaction();
 			FinalBicycle bicycle = new FinalBicycle();
-			sess.save(bicycle);
 
-			FinalWheel wheel = new FinalWheel();
-			bicycle.addWheel(wheel);
+			FinalWheel wheel1 = new FinalWheel();
+			bicycle.addWheel(wheel1);
+
+			FinalWheel wheel2 = new FinalWheel();
+			bicycle.addWheel(wheel2);
 
 			FinalSpoke spoke = new FinalSpoke();
-			wheel.addSpoke(spoke);
+			wheel1.addSpoke(spoke);
+
+			sess.save(bicycle);
 
 			trx.commit();
 
@@ -51,6 +58,8 @@ public class FinalEntitiesTest {
 
 			FinalSpoke spoke = (FinalSpoke)
 					sess.load(FinalSpoke.class, spokeId);
+
+			assertTrue(Hibernate.isInitialized(spoke.getWheel()));
 
 			trx.commit();
 		} catch (Exception e) {
