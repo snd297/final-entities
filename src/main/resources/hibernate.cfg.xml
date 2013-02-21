@@ -5,7 +5,9 @@
 <hibernate-configuration>
 	<session-factory>
 		<mapping class="com.github.snd297.finalentities.model.FinalBicycle" />
+		<mapping class="com.github.snd297.finalentities.model.FinalSpoke" />
 		<mapping class="com.github.snd297.finalentities.model.FinalWheel" />
-		<mapping class="com.github.snd297.finalentities.model.FinalMethodSpoke" />
+		<mapping class="com.github.snd297.finalentities.model.Spoke" />
+		<mapping class="com.github.snd297.finalentities.model.Wheel" />
 	</session-factory>
 </hibernate-configuration>

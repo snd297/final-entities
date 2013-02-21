@@ -15,29 +15,35 @@
  */
 package com.github.snd297.finalentities.model;
 
-import static com.google.common.collect.Sets.newHashSet;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
 
-import java.util.Set;
+@MappedSuperclass
+public abstract class LongIdAndVersion {
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+	private Long id;
+	private Integer version;
 
-@Entity
-public class Wheel extends LongIdAndVersion {
+	@Id
+	@GeneratedValue
+	public Long getId() {
+		return id;
+	}
 
-	private Set<Spoke> spokes = newHashSet();
-
-	@OneToMany(
-			mappedBy = "wheel",
-			cascade = CascadeType.ALL,
-			orphanRemoval = true)
-	public Set<Spoke> getSpokes() {
-		return spokes;
+	@Version
+	public Integer getVersion() {
+		return version;
 	}
 
 	@SuppressWarnings("unused")
-	private void setSpokes(Set<Spoke> spokes) {
-		this.spokes = spokes;
+	private void setId(Long id) {
+		this.id = id;
+	}
+
+	@SuppressWarnings("unused")
+	private void setVersion(Integer version) {
+		this.version = version;
 	}
 }
