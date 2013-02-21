@@ -13,7 +13,7 @@ import com.github.snd297.finalentities.persistence.HibernateUtil;
 
 public class FinalEntitiesTest {
 
-	private static Long spokeId;
+	private static Long finalSpokeId;
 
 	@BeforeClass
 	public static void classSetup() throws Exception {
@@ -24,21 +24,14 @@ public class FinalEntitiesTest {
 			sess = sessFac.openSession();
 			trx = sess.beginTransaction();
 			FinalBicycle bicycle = new FinalBicycle();
-
-			FinalWheel wheel1 = new FinalWheel();
-			bicycle.addWheel(wheel1);
-
-			FinalWheel wheel2 = new FinalWheel();
-			bicycle.addWheel(wheel2);
-
-			FinalSpoke spoke = new FinalSpoke();
-			wheel1.addSpoke(spoke);
+			FinalWheel wheel1 = new FinalWheel(bicycle);
+			FinalMethodSpoke spoke = new FinalMethodSpoke(wheel1);
 
 			sess.save(bicycle);
 
 			trx.commit();
 
-			spokeId = spoke.getId();
+			finalSpokeId = spoke.getId();
 		} catch (Exception e) {
 			HibernateUtil.rollbackQuietly(trx);
 			throw e;
@@ -56,8 +49,8 @@ public class FinalEntitiesTest {
 			sess = sessFac.openSession();
 			trx = sess.beginTransaction();
 
-			FinalSpoke spoke = (FinalSpoke)
-					sess.load(FinalSpoke.class, spokeId);
+			FinalMethodSpoke spoke = (FinalMethodSpoke)
+					sess.load(FinalMethodSpoke.class, finalSpokeId);
 
 			assertTrue(Hibernate.isInitialized(spoke.getWheel()));
 

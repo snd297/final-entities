@@ -6,28 +6,12 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
-
-import com.github.snd297.modelutil.EntityWLongIdAndVersion;
 
 @Entity
-public final class Wheel extends EntityWLongIdAndVersion {
-	private FinalBicycle bicycle;
+public class Wheel extends EntityWLongIdAndVersion {
+
 	private Set<Spoke> spokes = newHashSet();
-
-	public void addSpoke(Spoke spoke) {
-		spokes.add(spoke);
-		spoke.setWheel(this);
-	}
-
-	@NotNull
-	@ManyToOne(fetch = FetchType.LAZY)
-	public FinalBicycle getBicycle() {
-		return bicycle;
-	}
 
 	@OneToMany(
 			mappedBy = "wheel",
@@ -35,10 +19,6 @@ public final class Wheel extends EntityWLongIdAndVersion {
 			orphanRemoval = true)
 	public Set<Spoke> getSpokes() {
 		return spokes;
-	}
-
-	public void setBicycle(FinalBicycle bicycle) {
-		this.bicycle = bicycle;
 	}
 
 	@SuppressWarnings("unused")

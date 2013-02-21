@@ -5,14 +5,16 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.Proxy;
-
-import com.github.snd297.modelutil.EntityWLongIdAndVersion;
-
 @Entity
-@Proxy(lazy = false)
 public class Spoke extends EntityWLongIdAndVersion {
 	private Wheel wheel;
+
+	Spoke() {}
+
+	public Spoke(Wheel wheel) {
+		this.wheel = wheel;
+		wheel.getSpokes().add(this);
+	}
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)

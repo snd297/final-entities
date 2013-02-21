@@ -1,4 +1,4 @@
-package com.github.snd297.modelutil;
+package com.github.snd297.finalentities.model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

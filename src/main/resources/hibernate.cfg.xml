@@ -4,9 +4,8 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<property name="connection.isolation">2</property>
 		<mapping class="com.github.snd297.finalentities.model.FinalBicycle" />
 		<mapping class="com.github.snd297.finalentities.model.FinalWheel" />
-		<mapping class="com.github.snd297.finalentities.model.FinalSpoke" />
+		<mapping class="com.github.snd297.finalentities.model.FinalMethodSpoke" />
 	</session-factory>
 </hibernate-configuration>

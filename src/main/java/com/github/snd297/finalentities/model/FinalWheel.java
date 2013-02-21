@@ -11,19 +11,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.Proxy;
-
-import com.github.snd297.modelutil.EntityWLongIdAndVersion;
-
 @Entity
-@Proxy(lazy = false)
 public final class FinalWheel extends EntityWLongIdAndVersion {
 	private FinalBicycle bicycle;
-	private Set<FinalSpoke> spokes = newHashSet();
+	private Set<FinalMethodSpoke> spokes = newHashSet();
 
-	public void addSpoke(FinalSpoke spoke) {
-		spokes.add(spoke);
-		spoke.setWheel(this);
+	// For Hibernate
+	FinalWheel() {}
+
+	public FinalWheel(FinalBicycle bicycle) {
+		this.bicycle = bicycle;
+		bicycle.getWheels().add(this);
 	}
 
 	@NotNull
@@ -36,7 +34,7 @@ public final class FinalWheel extends EntityWLongIdAndVersion {
 			mappedBy = "wheel",
 			cascade = CascadeType.ALL,
 			orphanRemoval = true)
-	public Set<FinalSpoke> getSpokes() {
+	public Set<FinalMethodSpoke> getSpokes() {
 		return spokes;
 	}
 
@@ -45,7 +43,7 @@ public final class FinalWheel extends EntityWLongIdAndVersion {
 	}
 
 	@SuppressWarnings("unused")
-	private void setSpokes(Set<FinalSpoke> spokes) {
+	private void setSpokes(Set<FinalMethodSpoke> spokes) {
 		this.spokes = spokes;
 	}
 }

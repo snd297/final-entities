@@ -9,19 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.Proxy;
-
-import com.github.snd297.modelutil.EntityWLongIdAndVersion;
-
 @Entity
-@Proxy(lazy = false)
 public final class FinalBicycle extends EntityWLongIdAndVersion {
 	private Set<FinalWheel> wheels = newHashSet();
-
-	public void addWheel(FinalWheel wheel) {
-		wheels.add(wheel);
-		wheel.setBicycle(this);
-	}
 
 	@OneToMany(
 			mappedBy = "bicycle",
