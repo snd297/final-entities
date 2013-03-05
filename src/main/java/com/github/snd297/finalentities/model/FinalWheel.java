@@ -29,7 +29,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 public final class FinalWheel extends LongIdAndVersion {
 	private FinalBicycle bicycle;
-	private Set<FinalSpoke> spokes = newHashSet();
+	private Set<SpokeWFinalWheel> spokes = newHashSet();
 
 	// For Hibernate
 	FinalWheel() {}
@@ -49,7 +49,7 @@ public final class FinalWheel extends LongIdAndVersion {
 			mappedBy = "wheel",
 			cascade = CascadeType.ALL,
 			orphanRemoval = true)
-	public Set<FinalSpoke> getSpokes() {
+	public Set<SpokeWFinalWheel> getSpokes() {
 		return spokes;
 	}
 
@@ -58,7 +58,7 @@ public final class FinalWheel extends LongIdAndVersion {
 	}
 
 	@SuppressWarnings("unused")
-	private void setSpokes(Set<FinalSpoke> spokes) {
+	private void setSpokes(Set<SpokeWFinalWheel> spokes) {
 		this.spokes = spokes;
 	}
 }
