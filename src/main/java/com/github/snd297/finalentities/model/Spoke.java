@@ -23,15 +23,6 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Spoke extends LongIdAndVersion {
 	private Wheel wheel;
-	private String name = "love";
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	/** For Hibernate. */
 	Spoke() {}
@@ -50,5 +41,4 @@ public class Spoke extends LongIdAndVersion {
 	public void setWheel(Wheel wheel) {
 		this.wheel = wheel;
 	}
-
 }
