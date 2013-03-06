@@ -33,6 +33,7 @@ public class Spoke extends LongIdAndVersion {
 		this.name = name;
 	}
 
+	/** For Hibernate. */
 	Spoke() {}
 
 	public Spoke(Wheel wheel) {

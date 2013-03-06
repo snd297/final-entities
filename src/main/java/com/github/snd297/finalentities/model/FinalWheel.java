@@ -31,7 +31,7 @@ public final class FinalWheel extends LongIdAndVersion {
 	private FinalBicycle bicycle;
 	private Set<SpokeInFinalWheel> spokes = newHashSet();
 
-	// For Hibernate
+	/** For Hibernate. */
 	FinalWheel() {}
 
 	public FinalWheel(FinalBicycle bicycle) {
