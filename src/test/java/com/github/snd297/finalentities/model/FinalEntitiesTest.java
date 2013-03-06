@@ -43,7 +43,7 @@ public class FinalEntitiesTest {
 
 			FinalBicycle bicycle = new FinalBicycle();
 			FinalWheel finalWheel = new FinalWheel(bicycle);
-			SpokeWFinalWheel finalSpoke = new SpokeWFinalWheel(finalWheel);
+			SpokeInFinalWheel finalSpoke = new SpokeInFinalWheel(finalWheel);
 			sess.save(bicycle);
 
 			Wheel wheel = new Wheel();
@@ -71,8 +71,8 @@ public class FinalEntitiesTest {
 			sess = sessFac.openSession();
 			trx = sess.beginTransaction();
 
-			SpokeWFinalWheel spoke = (SpokeWFinalWheel)
-					sess.load(SpokeWFinalWheel.class, finalSpokeId);
+			SpokeInFinalWheel spoke = (SpokeInFinalWheel)
+					sess.load(SpokeInFinalWheel.class, finalSpokeId);
 
 			assertTrue(Hibernate.isInitialized(spoke.getWheel()));
 
