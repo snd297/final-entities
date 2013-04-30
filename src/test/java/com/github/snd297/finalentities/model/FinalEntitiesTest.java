@@ -22,6 +22,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.proxy.HibernateProxy;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -74,7 +75,9 @@ public class FinalEntitiesTest {
 			SpokeInFinalWheel spoke = (SpokeInFinalWheel)
 					sess.load(SpokeInFinalWheel.class, finalSpokeId);
 
-			assertTrue(Hibernate.isInitialized(spoke.getWheel()));
+			FinalWheel wheel = spoke.getWheel();
+
+			assertFalse((Object) wheel instanceof HibernateProxy);
 
 			trx.commit();
 		} catch (Exception e) {
@@ -97,7 +100,10 @@ public class FinalEntitiesTest {
 			Spoke spoke =
 					(Spoke) sess.load(Spoke.class, spokeId);
 
-			assertFalse(Hibernate.isInitialized(spoke.getWheel()));
+			Wheel wheel = spoke.getWheel();
+
+			assertTrue(wheel instanceof HibernateProxy);
+			assertFalse(Hibernate.isInitialized(wheel));
 
 			trx.commit();
 		} catch (Exception e) {
